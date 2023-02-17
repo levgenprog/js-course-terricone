@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hjkl</h1>
+
+</body>
+<script>
+
+    let arr = [];
+    for (let i = 0; i < 10; i++) {
+        let num = Math.floor(Math.random() * 101);
+        arr[i] = num;
+    }
+    document.write("<h1>" + arr + "</h1>")
+
+    console.log(arr);
+
+    // let numbers = [10, 20, 30];
+    // numbers.unshift(5, 0);
+    // console.log(numbers); // [5, 0, 10, 20, 30]
+
+    // let firstElement = numbers.shift();
+    // console.log(numbers); // [0, 10, 20, 30]
+    // console.log(firstElement); // 5
+
+    // numbers.splice(2, 2);
+    // console.log(numbers); // [0, 10]
+
+    let names = ["Jane", "John", "Jim"];
+    names.sort()
+    names.reverse()
+    names.sort()
+
+    let digits = [10, 20, 30, 40, 50];
+    //10 20 30
+    for (let i = 0; i < digits.length; i++) {
+        console.log(digits[i]);
+    }
+
+    // let numbers = [10, 20, 30, 40, 50];
+
+    // numbers.forEach(function (num) {
+    //     console.log(num);
+    // });
+    // numbers.forEach(element => console.log(element));
+
+    // for (let num of numbers) {
+    //     console.log(num);
+    // }
+
+    // Рандомное кол-во клиентов - done
+    // В арай - done
+    // выбрать рандомно 3-х клиентов
+
+    function getWinners() {
+        let clients = [];
+        let qunt = Math.floor(Math.random() * 1000 - 10 + 1) + 10;
+        for (let i = 0; i < qunt; i++) {
+            let t = Math.floor(Math.random() * 1001);
+            clients.push(t);
+        }
+        let winners = [];
+        for (let i = 0; i < 3; i++) {
+            let index = Math.floor(Math.random() * clients.length);
+            winners.push(clients[index]);
+        }
+        document.write("<h1>Наши победители:" + winners + "</h1>")
+    }
+
+    getWinners();
+
+    let data = new Date();
+    let hours = data.getHours();
+
+    alert(hours);
+
+    function sayHello(){
+        //0 - 4 ночь
+        // 4 - 12 утро
+        // 12 - 16 день
+        // 16 - 24 вечер 
+    }
+
+
+</script>
+
+</html>

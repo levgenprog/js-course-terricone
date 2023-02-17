@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="phone" placeholder="+7784">
+    </form>
+    <button onclick="checkNumber()">Submit</button>
+</body>
+<script>
+    // let w = "    hello, World   ".trim();
+    // let l = w.indexOf("l", 7);
+    // let sbrst = w.slice(-5);
+    // let templ = /[a-z]A-Z/
+
+    // let stars =  w.replace("World", "***");
+
+    // document.write();
+    
+
+
+    // let myString = 'ht, htj, Hello, world!';
+    // let chars = myString.split(', ', [2]);
+    // console.log(chars); // Output: ["H", "e", "l", "l", "o", ",", " ", "w", "o", "r", "l", "d", "!"]
+
+    // let myString = 'The quick brown qgfgh fox jumps over the lazy dog.';
+    // let pattern = /q\w+/g;
+    // let matched = myString.match(pattern);
+    // document.write(matched)
+
+    // let mail = 'johndoe@gmail.com';
+    // let [name, domain] = mail.split("@");
+    // console.log(name);
+    // console.log(domain);
+    // let message = `<h1>${name.toUpperCase()}</h1>`
+    // document.write(message);
+
+    // let url = "https://twitter.com/johndoe";
+    // let platform = url.split('/')[2];
+    // // document.write(platform);
+    // let pattern = /(?<=\/)\w+$/;
+    // let username = url.match(pattern)[0];
+    // let formattedName = `${username.charAt(0).toUpperCase()}${username.slice(1)}`;
+    // console.log(formattedName);
+
+    // let datePattern = /^\d{2}-\d{2}-\d{4}$/; 
+    // let testDate = "2023-04-12";
+    // let correct = "17-03-2023";
+    // if(!datePattern.test(testDate)){
+    //     console.log(`Incorrect input ${testDate}`);
+    // }
+    // if (datePattern.test(correct)) {
+    //     console.log("Good! " + correct);
+    // }
+    function checkNumber(){
+        let number = document.getElementById('phone');
+        console.log(number.value);
+    }
+
+</script>
+</html>
