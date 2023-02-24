@@ -1,0 +1,39 @@
+#searchbar{
+    width: 50%;
+    margin-left: auto;
+}
+
+#searchInput{
+    width: 100%;
+    height: 2em;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+#searchResult{
+    display: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1px;
+    background-color: antiquewhite;
+    position: absolute;
+    width: auto;
+}
+
+#searchResult ul{
+    list-style-type: none;
+    padding: 0.5em;
+}
+
+#searchResult ul li{
+    line-height: 1em;
+}
+
+.found-elements{
+    padding: 0.5em;
+    font-size: 0.75em;
+}
+
+.highligh{
+    background-color: yellow;
+}

@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -17,22 +18,37 @@
         <h3>Find</h3>
         <form action="">
             <input type="text" id="search">
-            <button id="search-btn" type="button" onclick="searchWord()">Search</button>
+            <button id="search-btn" type="button" onclick="searchWord(0)">Search</button>
         </form><br><br>
         <h3>Replace</h3>
+        <!-- Новая форма с передачей аргумента -->
         <form action="">
-            <input type="text" id="search">
-            <button id="search-btn" type="button" onclick="searchWord()">Search</button>
+            <input type="text" id="old">
+            <input type="text" id="new">
+            <button type="button" onclick="searchWord(1)">Search</button>
         </form>
+
+        <br>
+        <br>
+        <!-- Создали блоки - контейнеры и инпут -->
+        <div id="searchbar">
+            <input type="text" id="searchInput">
+            <div id="searchResult"></div>
+        </div>
 
         <div class="text" id="txt">
             <b>Lorem</b> ipsum dolor sit amet consectetur, adipisicing elit.
-            A hic reprehenderit delectus ratione repudiandae tenetur incidunt voluptas ullam impedit 
+            <a href="#">A hic reprehenderit delectus</a> ratione repudiandae tenetur incidunt voluptas ullam impedit 
             aspernatur nam qui 
             sunt ad recusandae numquam, 
             quas aliquam sint deserunt?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe natus minima soluta tempore totam! 
+            <a href="#">Lorem ipsum dolor</a> sit amet consectetur adipisicing elit. Saepe natus minima soluta tempore totam! 
             Distinctio pariatur, dicta in odit laborum saepe rerum, rem dolorum deserunt sint iure harum veniam possimus.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis vero dolor possimus magni! Minus ad, 
+            laboriosam aspernatur non ducimus iure eaque provident eveniet molestiae dicta dignissimos perspiciatis,
+             <a href="#">facilis vero soluta!</a> 
+             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore deserunt soluta cumque saepe vero? 
+             Libero magni nam earum unde, rem amet, natus quis quos, modi quam temporibus quibusdam dolorum quod.
         </div>
     </div>
 

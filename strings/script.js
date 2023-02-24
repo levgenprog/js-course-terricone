@@ -34,18 +34,96 @@ function checkNumber(){
 
 // Ищем в документе кнопку по адишнику. Привязываем к ней событие клика. Вызываем функцию
 // document.getElementById('searcs-btn').addEventListener('click', searchWord());
-function searchWord()
+function searchWord(attr)
 {
-    let searchWord = document.getElementById('search').value;
     let text = document.getElementById('txt').innerText;
-    let pattern = new RegExp(searchWord, 'gi');
-
-    let new_text = text.replace(pattern, 
-        `<span style="background-color: yellow;">${searchWord}</span>`
-    );
+    
+    let new_text = ''
+    if(attr === 0){
+        let searchWord = document.getElementById('search').value;
+        let pattern = new RegExp(searchWord, 'gi');
+        new_text = text.replace(pattern, 
+        `<span style="background-color: yellow;">${searchWord}</span>`);
+    }else if(attr === 1){
+        let searchWord = document.getElementById('old').value;
+        let pattern = new RegExp(searchWord, 'gi');
+        let newWord = document.getElementById('new').value;
+        new_text = text.replace(pattern, newWord);
+    }
 
     document.getElementById('txt').innerHTML = new_text;
 }
+
+
+//вызываем функцию когда пользователь перестал нажимать клавишу
+document.getElementById('searchInput').addEventListener('keyup', event => {
+   findLinks(event.target.value);
+});
+
+function findLinks(searchVal){
+    searchVal = searchVal.toLowerCase();
+
+    if (searchVal.length === 0){
+        return;
+    }
+    //Ищем все ссылки внутри классе текст
+    let links = document.querySelectorAll('.text a');
+ 
+    let results = [];
+
+    //Проходимся по элементам и добавляем их в результат
+    links.forEach(link => {
+        if(link.innerText.includes(searchVal)){
+            results.push(`<li><a href="#">${highlight(link.innerText, searchVal) }</a></li>`);
+        }
+    })
+
+    drawLinks(results);
+}
+// worldisthebestplacetolive   dis == 4
+function highlight(linkTxt, word){
+    // Находим индекс подстроки
+    let index = linkTxt.toLowerCase().indexOf(word);
+
+    let result = [
+        //Вставляем строку до индекса 
+        linkTxt.slice(0, index),
+        //Вставляем подстроку в массив и даем ей класс
+        '<span class="highligh">',
+        linkTxt.slice(index, index + word.length),
+        '</span>',
+        //Вставляем остаток первоначальной строки
+        linkTxt.slice(index + word.length)
+    ].join('')// Обращает массив в строку, с пустым разделителем
+    return result;
+}
+
+function drawLinks(toDraw) {
+    let container = document.getElementById('searchResult');
+    
+    //Делаем строку из HTML тегов, куда вставляем все элементы массива
+    let result = `<ul>${toDraw}</ul>`
+    result += `<div class="foud-elements">Найдено ${toDraw.length} элементов</div>`
+    
+    container.innerHTML = result;
+    if(toDraw.length > 0){
+        container.style.display = 'block';
+    }else{
+        container.style.display = 'none';
+    }
+}
+
+
+let dog = {
+    spice: "Toyterier",
+    name: "Kesha",
+    age: 3
+}
+
+dog['color'] = "yellow";
+dog.name = 'Dog'
+
+console.log('house' in dog);
 
 
 
