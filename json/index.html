@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    
+    <div id="content"></div>
+    <button id="get">Get</button>
+    <script>
+        // let student = {
+        //     name: 'John',
+        //     age: 30,
+        //     isAdmin: false,
+        //     courses: ['html', 'css', 'js'],
+        //     wife: null
+
+            
+        // };
+
+        // let studentJson = JSON.stringify(student);
+
+        // function download(content, filename, contentType){
+        //     let a = document.createElement('a');
+        //     let file = new Blob([content], {type: contentType});
+        //     a.href = URL.createObjectURL(file);
+        //     a.download = filename;
+        //     a.click();
+        // }
+        // download(studentJson, 'student.json', 'text/plain');
+
+        // console.log(studentJson);
+
+        // let json = JSON.stringify(value, [replacer, space])
+
+        // let user = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
+
+        // let user2 = JSON.parse(user);
+        // console.log(user2);
+
+
+        // let json = '{ "age": 30, "name": "Vasia" }'; // данные неполны
+        // try {
+        //     let user = JSON.parse(json); // <-- выполнится без ошибок
+        //     if (!user.name) {
+        //         throw Error("Данные неполны: нет имени"); // (*)
+        //     }
+        //     alert( user.name );
+        // } catch(e) {
+        //     alert( "JSON Error: " + e.message ); // JSON Error: Данные неполны: нет имени
+        // }
+
+
+        // let xhr = new XMLHttpRequest();
+        // const url = 'https://dummyjson.com/products/2';
+        // xhr.open("GET", url, true);
+        // xhr.onload = function() {
+        //     let data = JSON.parse(xhr.responseText)
+        //     document.getElementById('content').innerHTML = data.title;
+        // };
+        // xhr.send()
+
+        // xhr.onerror = function() { // происходит, только когда запрос совсем не получилось выполнить
+        //     alert(`Ошибка соединения`);
+        // };
+                
+
+        // $(document).ready(() => {
+        //     $('#get').click(() => {
+        //         $.ajax({
+        //             method: "GET",
+        //             url: url,
+        //             success: data => {
+        //                 $("#content").html(`
+        //                     <img src="${data.images[2]}">
+        //                 `);
+        //                 console.log(data);
+        //             }
+        //         })
+        //     })
+        // })
+
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let result = "hello";
+                resolve(result)
+            }, 3000);
+        });
+
+        promise.then(result => {
+            alert(result);
+        }).catch(e => {
+            alert(e);
+        })
+
+        async function f() {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("готово!"), 10000)
+            });
+            let result = await promise; // будет ждать, пока промис не выполнится (*)
+            alert(result); // "готово!"
+        }
+
+        f();
+
+        function wait(){
+            setTimeout(() => {alert(2)}, 15000)
+        }
+
+        wait();
+        console.log(100);
+
+
+    </script>
+</body>
+</html>

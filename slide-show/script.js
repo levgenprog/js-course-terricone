@@ -5,6 +5,7 @@ function switchSlides(diff){
     showSlides(counter);
 }
 
+setInterval(() => showSlides(counter+=1), 3000)
 function showSlides(n){
     counter = n;
     const slides = document.getElementsByClassName('slide');
