@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="register">
+        <label for="">Name</label><br>
+        <input type="text" id="name"><br>
+
+        <label for="">Email</label><br>
+        <input type="email" id="email"><br>
+
+        <label for="">Phone</label><br>
+        <input type="tel" id="tel"><br>
+
+        <label for="">Password</label><br>
+        <input type="password" id="pass"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Log in</h2>
+
+    <form id="login">
+        <label for="">Username</label><br>
+        <input type="text" id="loginName"><br>
+
+        <label for="">Password</label><br>
+        <input type="text" id="loginPass"><br><br>
+        <input type="submit" value="Log in">
+    </form>
+
+
+    <script>
+
+        const login = document.getElementById('login');
+        login.addEventListener('submit', event => {
+            event.preventDefault();
+            const userName = document.getElementById('loginName').value;
+            const userPass = document.getElementById('loginPass').value;
+
+            fetch('https://dummyjson.com/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: userName,
+                    password: userPass
+                })
+            })
+            .then(res => {
+                if(res.ok){
+                    return res.json()
+                }else{
+                    throw Error("Error!")
+                }
+            })
+            .then(data => {
+                localStorage.setItem('access_token', data.token);
+                console.log(localStorage.getItem('access_token'));
+            })
+            .catch(e => alert(e))
+
+
+        })
+
+        const register = document.getElementById('register');
+        register.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const tel = document.getElementById('tel').value;
+            const pass = document.getElementById('pass').value;
+
+            const userData = {
+                firstname: name,
+                email: email,
+                phone: tel,
+                password: pass
+            }
+            const userJson = JSON.stringify(userData);
+            console.log(userJson);
+
+            fetch('https://dummyjson.com/users/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: userJson})
+            .then(res => res.json())
+            .then(data => {
+                alert('registration passed');
+                console.log(data);
+            });
+        })
+
+
+    </script>
+</body>
+</html>

@@ -84,36 +84,75 @@
         //     })
         // })
 
-        const promise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                let result = "hello";
-                resolve(result)
-            }, 3000);
-        });
+        // const promise = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         let result = "hello";
+        //         resolve(result)
+        //     }, 3000);
+        // });
 
-        promise.then(result => {
-            alert(result);
-        }).catch(e => {
-            alert(e);
+        // promise.then(result => {
+        //     alert(result);
+        // }).catch(e => {
+        //     alert(e);
+        // })
+
+        // async function f() {
+        //     let promise = new Promise((resolve, reject) => {
+        //         setTimeout(() => resolve("готово!"), 10000)
+        //     });
+        //     let result = await promise; // будет ждать, пока промис не выполнится (*)
+        //     alert(result); // "готово!"
+        // }
+
+        // f();
+
+        
+        // let p = new Promise((resolve, reject) => {
+        //     let a = 1 + 5;
+        //     if(a === 3){
+        //         resolve('Done')
+        //     }else{
+        //         reject('Reject')
+        //     }
+        // })
+
+        // p.then(message => console.log(message))
+        // .catch(error => console.log(error));
+
+
+        fetch('https://dummyjson.com/products/add', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                title: 'BMW Pencil',
+                price: 300
+            })
         })
+        .then(res => {
+            res.json()
+            // if(res.ok){
+            //     return res.json()
+            // }else{
+            //     throw Error("Errror !!!!!!")
+            // }
+        })
+        .then(data => console.log(data))
+        .catch(err => alert(err))
 
-        async function f() {
-            let promise = new Promise((resolve, reject) => {
-                setTimeout(() => resolve("готово!"), 10000)
-            });
-            let result = await promise; // будет ждать, пока промис не выполнится (*)
-            alert(result); // "готово!"
-        }
 
-        f();
-
-        function wait(){
-            setTimeout(() => {alert(2)}, 15000)
-        }
-
-        wait();
-        console.log(100);
-
+        // fetch('https://dummyjson.com/products?limit=10')
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log(data.products[1]);
+        //     document.getElementById('content').innerHTML = `
+        //         <p>${data.products[1].title}</p>
+        //         <img src=${data.products[1].images[1]}> 
+        //         <button data-id="${data.products[1].id}"
+        //         onclick="${console.log(data.products[1].id)}"
+        //         >Add</button>
+        //     `
+        // })
 
     </script>
 </body>
